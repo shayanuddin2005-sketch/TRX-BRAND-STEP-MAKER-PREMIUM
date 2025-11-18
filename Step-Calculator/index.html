@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TRX FAST HACKER TOOL</title>
+    <title>TRX ULTIMATE STEP MAKING TOOLS</title>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
@@ -12,82 +12,113 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Permanent+Marker&family=Hind+Siliguri:wght@500;700&display=swap" rel="stylesheet">
     
     <style>
-        /* ---- OPTIMIZED VARIABLES ---- */
+        /* ---- SETUP & ARGB VARIABLES ---- */
         :root {
             --neon-red: #ff003c;
             --neon-blue: #00f3ff;
             --neon-green: #00ff9d;
-            --bg-dark: #020202;
-            --card-bg: rgba(10, 15, 20, 0.95); /* No Blur, Just Solid Translucency */
+            --neon-purple: #bc13fe;
+            --bg-dark: #050505;
+            --glass: rgba(10, 15, 20, 0.75);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             background-color: var(--bg-dark);
+            /* Deep RGB Aura behind Matrix */
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(0, 243, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(188, 19, 254, 0.15) 0%, transparent 50%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Orbitron', sans-serif;
+            font-family: 'Orbitron', sans-serif; /* 2nd Picture Font */
             overflow: hidden;
             position: relative;
             color: #fff;
         }
 
-        /* ---- 1. OPTIMIZED BRANDING ---- */
+        /* ---- 1. MASSIVE RED BRANDING (Layer 0) ---- */
         .mega-brand-bg {
             position: fixed;
             top: 50%; left: 50%;
             transform: translate(-50%, -50%) rotate(-15deg);
-            font-family: 'Permanent Marker', cursive;
-            font-size: 12vw;
-            color: rgba(255, 0, 60, 0.08); /* Low opacity for performance */
+            font-family: 'Permanent Marker', cursive; /* Brush/Rough Style */
+            font-size: 15vw; /* EXTREMELY HUGE */
+            color: transparent;
+            -webkit-text-stroke: 4px rgba(255, 0, 60, 0.15);
             z-index: 0;
             white-space: nowrap;
             pointer-events: none;
+            animation: pulseBrand 3s infinite alternate;
             text-align: center;
             width: 100%;
-            /* Removed complex text-shadows and animations to stop lag */
+        }
+        
+        .mega-brand-overlay {
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%) rotate(-15deg);
+            font-family: 'Permanent Marker', cursive;
+            font-size: 15vw;
+            color: rgba(255, 0, 60, 0.05); /* Inner Fill */
+            text-shadow: 0 0 100px rgba(255, 0, 60, 0.6); /* Huge Red Glow */
+            z-index: 0;
+            pointer-events: none;
+            mix-blend-mode: screen;
+            white-space: nowrap;
         }
 
-        /* ---- 2. LIGHTWEIGHT MATRIX ---- */
+        @keyframes pulseBrand {
+            0% { opacity: 0.6; transform: translate(-50%, -50%) rotate(-15deg) scale(1); }
+            100% { opacity: 1; transform: translate(-50%, -50%) rotate(-15deg) scale(1.02); }
+        }
+
+        /* ---- 2. MATRIX RAIN (Layer 1) ---- */
         canvas#matrix {
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
             z-index: 1;
-            opacity: 0.3;
+            opacity: 0.4; /* Visible but not distracting */
         }
 
-        /* ---- 3. MAIN CARD (LAG FREE) ---- */
+        /* ---- 3. MAIN INTERFACE (Layer 10) ---- */
         .cyber-container {
             position: relative;
             z-index: 10;
             width: 95%;
-            max-width: 480px;
-            background: var(--card-bg); /* Removed Backdrop Filter */
-            border-radius: 15px;
-            padding: 3px;
-            box-shadow: 0 0 30px rgba(0, 243, 255, 0.1); /* Reduced Shadow */
+            max-width: 500px;
+            background: var(--glass);
+            border-radius: 20px;
+            padding: 4px; /* Border Space */
+            box-shadow: 0 0 80px rgba(0, 243, 255, 0.2);
+            backdrop-filter: blur(15px);
+            animation: float 6s ease-in-out infinite;
         }
 
-        /* RGB Border - Optimized Animation */
+        /* RGB Border Animation */
         .cyber-container::before {
             content: '';
             position: absolute;
             top: -2px; left: -2px; right: -2px; bottom: -2px;
-            background: linear-gradient(45deg, var(--neon-red), var(--neon-blue), var(--neon-green));
-            background-size: 200%; /* Smaller size = less work */
+            background: linear-gradient(45deg, var(--neon-red), var(--neon-blue), var(--neon-green), var(--neon-purple));
+            background-size: 300%;
             z-index: -1;
-            border-radius: 16px;
-            animation: rgbFlow 6s linear infinite; /* Slower animation */
+            border-radius: 22px;
+            animation: rgbFlow 5s linear infinite;
+            filter: blur(8px);
+            opacity: 0.8;
         }
 
         .interface-inner {
-            background: #050a0f;
-            border-radius: 13px;
-            padding: 15px;
+            background: rgba(5, 10, 15, 0.9);
+            border-radius: 16px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.8); /* Inner depth */
         }
 
         /* Stats Bar */
@@ -97,134 +128,151 @@
             font-size: 10px;
             color: var(--neon-green);
             margin-bottom: 10px;
-            border-bottom: 1px solid #222;
+            border-bottom: 1px solid #333;
             padding-bottom: 5px;
+            font-family: 'Orbitron', sans-serif;
         }
-        .blink { animation: blinker 1s infinite; }
+        .blink { animation: blinker 0.5s infinite; }
 
-        /* Live Graph - CSS Only */
+        /* Live Graph */
         .graph-box {
-            height: 35px;
+            height: 40px;
             display: flex;
             align-items: flex-end;
-            gap: 2px;
+            gap: 3px;
             margin-bottom: 15px;
-            border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+            opacity: 0.8;
+            border-bottom: 1px solid rgba(0, 243, 255, 0.3);
         }
         .bar {
             flex: 1;
-            background: var(--neon-blue);
-            opacity: 0.7;
-            animation: barAnim 1s infinite ease-in-out;
+            background: linear-gradient(to top, var(--neon-blue), transparent);
+            animation: barAnim 0.5s infinite alternate;
         }
 
         /* Header */
-        .header { text-align: center; margin-bottom: 15px; }
+        .header { text-align: center; margin-bottom: 20px; }
         .header h1 {
-            font-size: 24px;
-            color: #fff;
-            text-shadow: 0 0 5px rgba(0, 243, 255, 0.5);
-            margin-bottom: 2px;
+            font-size: 28px;
+            background: linear-gradient(to right, #fff, var(--neon-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+            font-weight: 900;
+            letter-spacing: 1px;
         }
         .header span {
             color: var(--neon-red);
             font-size: 10px;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             font-weight: bold;
         }
 
         /* Inputs */
-        .input-area { margin-bottom: 12px; }
+        .input-area { margin-bottom: 15px; }
         label {
             font-family: 'Hind Siliguri', sans-serif;
-            font-size: 13px;
-            color: #aaa;
+            font-size: 14px;
+            color: #ccc;
             display: block;
-            margin-bottom: 4px;
+            margin-bottom: 5px;
         }
         input {
             width: 100%;
-            padding: 10px;
-            background: #111;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.5);
             border: 1px solid #333;
-            border-left: 3px solid var(--neon-blue);
+            border-left: 4px solid var(--neon-blue);
             color: var(--neon-blue);
             font-family: 'Orbitron', sans-serif;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: bold;
             outline: none;
+            transition: 0.3s;
         }
-        input:focus { border-color: var(--neon-green); }
+        input:focus {
+            border-color: var(--neon-green);
+            box-shadow: 0 0 15px rgba(0, 255, 157, 0.3);
+        }
 
         /* Buttons */
-        .btn-grid { display: flex; gap: 8px; margin-bottom: 15px; }
+        .btn-grid { display: flex; gap: 10px; margin-bottom: 20px; }
         button {
             flex: 1;
-            padding: 10px;
+            padding: 12px;
             border: none;
             font-family: 'Hind Siliguri', sans-serif;
             font-weight: bold;
-            font-size: 13px;
+            font-size: 14px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 5px;
-            border-radius: 4px;
+            transition: 0.3s;
+            clip-path: polygon(10% 0, 100% 0, 100% 75%, 90% 100%, 0 100%, 0 25%);
         }
-        .btn-calc { background: var(--neon-green); color: #000; }
-        .btn-img { background: var(--neon-blue); color: #000; }
-        .btn-pdf { background: var(--neon-red); color: #fff; }
+        .btn-calc { background: var(--neon-green); box-shadow: 0 0 10px var(--neon-green); color: black; }
+        .btn-img { background: var(--neon-blue); box-shadow: 0 0 10px var(--neon-blue); color: black; }
+        .btn-pdf { background: var(--neon-red); box-shadow: 0 0 10px var(--neon-red); color: white; }
+        
+        button:hover { transform: scale(1.05); filter: brightness(1.2); }
 
         /* Results */
         #results { display: none; }
         .step-row {
             display: flex;
             justify-content: space-between;
-            background: rgba(0, 255, 157, 0.05);
-            padding: 8px 12px;
-            margin-bottom: 6px;
-            border-left: 2px solid var(--neon-blue);
-            font-size: 13px;
+            background: linear-gradient(90deg, rgba(0, 255, 157, 0.1), transparent);
+            padding: 10px;
+            margin-bottom: 8px;
+            border-left: 2px solid var(--neon-purple);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
+            animation: slideIn 0.4s forwards;
         }
         .total {
             background: var(--neon-blue);
-            color: #000;
+            color: black;
             text-align: center;
-            padding: 10px;
+            padding: 12px;
             font-weight: 900;
             font-family: 'Hind Siliguri', sans-serif;
-            margin-top: 10px;
+            margin-top: 15px;
             clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
         }
 
-        /* Terminal */
+        /* Fake Terminal */
         .terminal {
             background: #000;
             color: var(--neon-green);
             font-family: monospace;
-            font-size: 9px;
+            font-size: 10px;
             padding: 8px;
-            height: 60px;
+            height: 70px;
             overflow: hidden;
-            opacity: 0.6;
-            border: 1px solid #222;
+            opacity: 0.7;
+            border: 1px solid #333;
             margin-top: 15px;
         }
 
-        /* Efficient Animations */
-        @keyframes rgbFlow { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
+        /* Animations */
+        @keyframes rgbFlow { 0% { background-position: 0% 50%; } 100% { background-position: 300% 50%; } }
         @keyframes blinker { 50% { opacity: 0; } }
-        @keyframes barAnim { 0%, 100% { height: 20%; } 50% { height: 90%; } }
-        
+        @keyframes barAnim { 0% { height: 20%; } 100% { height: 90%; } }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+        @keyframes slideIn { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: translateX(0); } }
+
+        /* Mobile Adjustments */
         @media (max-width: 400px) {
-            .mega-brand-bg { font-size: 18vw; }
+            .mega-brand-bg, .mega-brand-overlay { font-size: 20vw; }
         }
     </style>
 </head>
 <body>
 
     <div class="mega-brand-bg">TRX BRAND TEAM</div>
+    <div class="mega-brand-overlay">TRX BRAND TEAM</div>
 
     <canvas id="matrix"></canvas>
 
@@ -232,15 +280,15 @@
         <div class="interface-inner">
             
             <div class="stats-bar">
-                <span>CPU: <b id="cpu">12%</b></span>
-                <span>RAM: <b id="ram">2.4GB</b></span>
+                <span>CPU: <b id="cpu">34%</b></span>
+                <span>RAM: <b id="ram">4.1GB</b></span>
                 <span><i class="fas fa-wifi"></i> <span class="blink">ONLINE</span></span>
             </div>
 
             <div class="graph-box" id="bars"></div>
 
             <div class="header">
-                <span>/// VIP TOOLS V.9 ///</span>
+                <span>/// PREMIUM V.9.0 ///</span>
                 <h1>STEP PREDICTOR</h1>
             </div>
 
@@ -265,61 +313,61 @@
             </div>
 
             <div class="terminal" id="log">
-                > SYSTEM READY...<br>
-                > WAITING FOR INPUT_
+                > INITIALIZING SYSTEM...<br>
+                > CONNECTING TO TRX SERVER...<br>
+                > READY FOR INPUT_
             </div>
 
-            <div style="text-align:center; font-size:9px; margin-top:10px; color:#444;">
+            <div style="text-align:center; font-size:9px; margin-top:10px; color:#666;">
                 POWERED BY TRX BRAND OFFICIAL
             </div>
         </div>
     </div>
 
     <script>
-        // 1. Optimized Matrix (Low CPU Usage)
+        // 1. Matrix Rain
         const c = document.getElementById('matrix');
         const ctx = c.getContext('2d');
         c.width = window.innerWidth;
         c.height = window.innerHeight;
-        const chars = "TRX10";
-        const drops = Array(Math.floor(c.width/25)).fill(1); // Fewer drops
+        const chars = "TRX01$$BRAND";
+        const drops = Array(Math.floor(c.width/20)).fill(1);
 
         function draw() {
-            ctx.fillStyle = "rgba(0, 0, 0, 0.1)"; // Faster fade
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
             ctx.fillRect(0, 0, c.width, c.height);
             ctx.fillStyle = "#00ff9d";
-            ctx.font = "12px monospace";
+            ctx.font = "14px Orbitron";
             for(let i=0; i<drops.length; i++) {
-                // Draw less frequently for performance
-                if(Math.random() > 0.5) {
-                    const txt = chars[Math.floor(Math.random()*chars.length)];
-                    ctx.fillText(txt, i*25, drops[i]*25);
-                    if(drops[i]*25 > c.height && Math.random() > 0.98) drops[i] = 0;
-                    drops[i]++;
-                }
+                const txt = chars[Math.floor(Math.random()*chars.length)];
+                ctx.fillText(txt, i*20, drops[i]*20);
+                if(drops[i]*20 > c.height && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
             }
         }
-        setInterval(draw, 80); // Slower FPS (80ms instead of 40ms)
+        setInterval(draw, 40);
 
-        // 2. CSS-Based Graph (Lighter JS)
+        // 2. Live Graph
         const box = document.getElementById('bars');
-        for(let i=0; i<20; i++){ // Fewer bars
+        for(let i=0; i<25; i++){
             let b = document.createElement('div');
             b.className = 'bar';
-            b.style.animationDuration = (Math.random() * 1 + 0.5) + 's';
+            b.style.animationDuration = (Math.random() * 0.5 + 0.3) + 's';
             box.appendChild(b);
         }
 
-        // 3. Simple Stats Update
+        // 3. Fake Stats
         setInterval(() => {
-            document.getElementById('cpu').innerText = Math.floor(Math.random()*30+10)+'%';
-        }, 3000); // Update slower
+            document.getElementById('cpu').innerText = Math.floor(Math.random()*40+10)+'%';
+            document.getElementById('ram').innerText = (Math.random()*2+2).toFixed(1)+'GB';
+        }, 2000);
 
-        // 4. Calculation
+        // 4. Calculator
         function calc() {
             const total = parseFloat(document.getElementById('total').value);
             const stepVal = parseInt(document.getElementById('steps').value);
-            if(!total || !stepVal) return alert("সঠিক সংখ্যা দিন!");
+            
+            if(!total || !stepVal) return alert("Please enter numbers!");
 
             const list = document.getElementById('list');
             list.innerHTML = "";
@@ -327,7 +375,7 @@
             
             // Log
             const log = document.getElementById('log');
-            log.innerHTML += `<br>> PROCESSING...`;
+            log.innerHTML += `<br>> CALCULATING FOR ${total} ৳...<br>> OPTIMIZING STRATEGY...`;
             log.scrollTop = log.scrollHeight;
 
             let divisor = Math.pow(2, stepVal) - 1;
@@ -341,6 +389,7 @@
                 
                 let div = document.createElement('div');
                 div.className = 'step-row';
+                div.style.animationDelay = (i*0.1)+'s';
                 div.innerHTML = `<span>>> STEP ${i}</span> <span>${val} ৳</span>`;
                 list.appendChild(div);
                 current *= 2;
@@ -353,7 +402,7 @@
             const el = document.getElementById('capture-area');
             html2canvas(el, { backgroundColor: null, scale: 2 }).then(can => {
                 let a = document.createElement('a');
-                a.download = 'TRX_FAST_RESULT.png';
+                a.download = 'TRX_HACK_RESULT.png';
                 a.href = can.toDataURL();
                 a.click();
             });
@@ -369,9 +418,9 @@
                 const w = pdf.internal.pageSize.getWidth();
                 const h = (can.height * w) / can.width;
                 pdf.setFillColor(5, 5, 10);
-                pdf.rect(0, 0, w, 300, 'F');
+                pdf.rect(0, 0, w, 300, 'F'); // Dark Background in PDF
                 pdf.addImage(img, 'PNG', 0, 20, w, h);
-                pdf.save('TRX_RESULT.pdf');
+                pdf.save('TRX_VIP_DATA.pdf');
             });
         }
     </script>
